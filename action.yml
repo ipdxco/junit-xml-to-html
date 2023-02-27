@@ -1,0 +1,21 @@
+# action.yml
+name: 'jUnit XML to HTML'
+description: 'Convert jUnit XML to HTML'
+inputs:
+  mode:
+    description: 'Either "frames" or "no-frames"'
+    required: true
+    default: 'no-frames'
+  input:
+    description: 'Input XML file'
+    required: true
+  output:
+    description: 'Output HTML file or directory'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.mode }}
+    - ${{ inputs.input }}
+    - ${{ inputs.output }}
