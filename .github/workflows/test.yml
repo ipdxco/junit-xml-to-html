@@ -1,0 +1,23 @@
+name: Test
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          mode: 'no-frames'
+          input: 'test/data/junit.xml'
+          output: 'test/actual/junit.html'
+      - uses: ./
+        with:
+          mode: 'frames'
+          input: 'test/data/junit.xml'
+          output: 'test/actual/junit-html'
+      - run: diff test/actual/junit.html test/expected/junit.html
+      - run: diff -r test/actual/junit-html test/expected/junit-html
