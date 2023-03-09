@@ -12,7 +12,7 @@ jUnit XML to HTML is a GitHub Action that converts jUnit XML to HTML. The result
 
 Here's an example workflow that uses the jUnit XML to HTML action:
 
-"""
+```yml
 name: Test
 
 on: push
@@ -34,18 +34,18 @@ jobs:
           mode: 'no-frames'
           input: 'test/data/junit.xml'
           output: 'test/actual/junit.html'
-"""
+```
 
 This workflow checks out the code, runs the tests using `python -m unittest discover`, and then converts the jUnit XML report to an HTML report.
 
 You can also use the action in other ways, such as running it on a Docker container:
 
-"""
+```sh
 docker run --rm -v "$(pwd):/workspace" -w "/workspace" pl-strflt/junit-xml-to-html:latest \
   --mode frames \
   --input path/to/junit.xml \
   --output path/to/output
-"""
+```
 
 The converter is also distributed as a docker image at https://github.com/orgs/pl-strflt/packages/container/package/junit-xml-to-html
 
