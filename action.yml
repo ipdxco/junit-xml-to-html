@@ -13,9 +13,14 @@ inputs:
     description: 'Output HTML file or directory'
     required: true
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.mode }}
-    - ${{ inputs.input }}
-    - ${{ inputs.output }}
+  using: 'composite'
+  steps:
+    - uses: pl-strflt/docker-container-action@v1
+      env:
+        INPUT_MODE: ${{ inputs.input }}
+        INPUT_INPUT: ${{ inputs.input }}
+        INPUT_OUTPUT: ${{ inputs.output }}
+      with:
+        repository: ${{ env.GITHUB_ACTION_REPOSITORY || github.repository }}
+        ref: ${{ env.GITHUB_ACTION_REF || github.sha }}
+        args: $INPUT_MODE $INPUT_INPUT $INPUT_OUTPUT
