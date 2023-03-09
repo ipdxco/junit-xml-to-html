@@ -1,6 +1,9 @@
 # action.yml
 name: 'jUnit XML to HTML'
 description: 'Convert jUnit XML to HTML'
+branding:
+  icon: 'award'
+  color: 'green'
 inputs:
   mode:
     description: 'Either "frames" or "no-frames"'
