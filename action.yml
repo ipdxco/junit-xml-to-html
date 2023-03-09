@@ -17,7 +17,7 @@ runs:
   steps:
     - uses: pl-strflt/docker-container-action@v1
       env:
-        INPUT_MODE: ${{ inputs.input }}
+        INPUT_MODE: ${{ inputs.mode }}
         INPUT_INPUT: ${{ inputs.input }}
         INPUT_OUTPUT: ${{ inputs.output }}
       with:
