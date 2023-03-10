@@ -21,6 +21,7 @@ runs:
     - run: |
         echo ${{ toJSON(env) }}
         echo ${{ toJSON(github) }}
+      shell: bash
     - uses: pl-strflt/docker-container-action@v1
       env:
         INPUT_MODE: ${{ inputs.mode }}
