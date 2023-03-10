@@ -20,11 +20,12 @@ runs:
   steps:
     - id: action
       run: |
-        echo "$GITHUB_ACTION_PATH"
+        git config --get remote.origin.url
         echo "owner=$(jq -jn 'env.GITHUB_ACTION_PATH | split("/") | .[5]')" >> $GITHUB_OUTPUT
         echo "repo=$(jq -jn 'env.GITHUB_ACTION_PATH | split("/") | .[6]')" >> $GITHUB_OUTPUT
         echo "ref=$(jq -jn 'env.GITHUB_ACTION_PATH | split("/") | .[7:] | join("/")')" >> $GITHUB_OUTPUT
       shell: bash
+      working-directory: ${{ github.action_path }}
     - uses: pl-strflt/docker-container-action@v1
       env:
         INPUT_MODE: ${{ inputs.mode }}
