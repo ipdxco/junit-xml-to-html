@@ -18,9 +18,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: |
-        env
-        echo ${{ toJSON(github) }}
+    - id: action
+      run: |
+        echo "owner=$(jq -jn 'env.ACTION_PATH | split("/") | .[5]')" >> $GITHUB_OUTPUT
+        echo "repo=$(jq -jn 'env.ACTION_PATH | split("/") | .[6]')" >> $GITHUB_OUTPUT
+        echo "ref=$(jq -jn 'env.ACTION_PATH | split("/") | .[7:] | join("/")')" >> $GITHUB_OUTPUT
       shell: bash
     - uses: pl-strflt/docker-container-action@v1
       env:
@@ -28,6 +30,6 @@ runs:
         INPUT_INPUT: ${{ inputs.input }}
         INPUT_OUTPUT: ${{ inputs.output }}
       with:
-        repository: ${{ env.GITHUB_ACTION_REPOSITORY || github.repository }}
-        ref: ${{ env.GITHUB_ACTION_REF || github.sha }}
+        repository: ${{ steps.action.outputs.owner }}/${{ steps.action.outputs.repo }}
+        ref: ${{ steps.action.outputs.ref }}
         args: $INPUT_MODE $INPUT_INPUT $INPUT_OUTPUT
