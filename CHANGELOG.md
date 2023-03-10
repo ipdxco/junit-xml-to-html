@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.0.4] - 2023-03-10
+### Fixed
+- correctly extract the repository and ref inputs on self-hosted runners
+
 ## [1.0.3] - 2023-03-10
 ### Changed
 - use jq instead of cut to infer docker-container-action inputs
