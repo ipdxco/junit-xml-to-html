@@ -18,6 +18,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - run: |
+        echo ${{ toJSON(env) }}
+        echo ${{ toJSON(github) }}
     - uses: pl-strflt/docker-container-action@v1
       env:
         INPUT_MODE: ${{ inputs.mode }}
