@@ -19,7 +19,7 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        echo ${{ toJSON(env) }}
+        env
         echo ${{ toJSON(github) }}
       shell: bash
     - uses: pl-strflt/docker-container-action@v1
