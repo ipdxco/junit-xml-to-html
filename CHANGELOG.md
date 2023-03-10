@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.0.5] - 2023-03-10
+### Changed
+- start using `pl-strflt/docker-container-action/.github/actions/github`
+
 ## [1.0.4] - 2023-03-10
 ### Fixed
 - correctly extract the repository and ref inputs on self-hosted runners
