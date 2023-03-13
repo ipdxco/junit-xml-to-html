@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.1.0] - 2023-03-13
+### Changed
+- start using `pl-strflt/saxon`
+
+### Removed
+- removed `junit-xml-to-html` container image
+
 ## [1.0.5] - 2023-03-10
 ### Changed
 - start using `pl-strflt/docker-container-action/.github/actions/github`
@@ -28,4 +35,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2023-02-28
 ### Added
-- v1 of the jUnit XML to HTML action
+- v1 of the JUnit XML to HTML action

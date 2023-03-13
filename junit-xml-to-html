@@ -1,3 +1,20 @@
 #!/usr/bin/env bash
 
-docker run --rm -v "$(pwd):/workspace" -w "/workspace" $(docker build -q -f Dockerfile .) "$@"
+case "$1" in
+  "frames")
+    docker run --rm -v "$(pwd):/workspace" -w "/workspace" ghcr.io/pl-strflt/saxon:v1 \
+      -s:"$2" \
+      -xsl:/etc/junit-frames-saxon.xsl \
+      output.dir="/workspace/$3"
+    ;;
+  "no-frames")
+    docker run --rm -v "$(pwd):/workspace" -w "/workspace" ghcr.io/pl-strflt/saxon:v1 \
+      -s:"$2" \
+      -xsl:/etc/junit-noframes-saxon.xsl \
+      -o:"$3"
+    ;;
+  *)
+    echo "Usage: $0 <frames|no-frames> [input XML file] [output HTML file or directory]"
+    exit 1
+    ;;
+esac
