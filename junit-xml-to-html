@@ -13,8 +13,14 @@ case "$1" in
       -xsl:/etc/junit-noframes-saxon.xsl \
       -o:"$3"
     ;;
+  "summary")
+    docker run --rm -v "$(pwd):/workspace" -w "/workspace" ghcr.io/pl-strflt/saxon:v1 \
+      -s:"$2" \
+      -xsl:/etc/junit-summary.xsl \
+      -o:"$3"
+    ;;
   *)
-    echo "Usage: $0 <frames|no-frames> [input XML file] [output HTML file or directory]"
+    echo "Usage: $0 <frames|no-frames|summary> [input XML file] [output HTML file or directory]"
     exit 1
     ;;
 esac

@@ -6,7 +6,7 @@ branding:
   color: 'green'
 inputs:
   mode:
-    description: 'Either "frames" or "no-frames"'
+    description: 'Either "frames" or "no-frames" or "summary"'
     required: true
     default: 'no-frames'
   input:
@@ -32,3 +32,10 @@ runs:
         INPUT_OUTPUT: ${{ inputs.output }}
       with:
         args: -s:$INPUT_INPUT -xsl:/etc/junit-noframes-saxon.xsl -o:$INPUT_OUTPUT
+    - if: inputs.mode == 'summary'
+      uses: pl-strflt/saxon@v1
+      env:
+        INPUT_INPUT: ${{ inputs.input }}
+        INPUT_OUTPUT: ${{ inputs.output }}
+      with:
+        args: -s:$INPUT_INPUT -xsl:/etc/junit-summary.xsl -o:$INPUT_OUTPUT
