@@ -4,7 +4,7 @@ JUnit XML to HTML is a GitHub Action that converts JUnit XML to HTML. The result
 
 ## Inputs
 
-* `mode`: Either "frames" or "no-frames". Required; defaults to "no-frames".
+* `mode`: Either "frames" or "no-frames" or "summary". Required; defaults to "no-frames".
 * `input`: The input JUnit XML file. Required.
 * `output`: The output HTML file or directory. Required.
 

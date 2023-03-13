@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.1.1] - 2023-03-13
+### Added
+- support for summary HTML reports
+
 ## [1.1.0] - 2023-03-13
 ### Changed
 - start using `pl-strflt/saxon`
