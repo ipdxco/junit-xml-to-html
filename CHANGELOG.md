@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [1.1.2] - 2023-12-01
+### Changed
+- use saxon image from ipdxco
+
 ## [1.1.1] - 2023-03-13
 ### Added
 - support for summary HTML reports
